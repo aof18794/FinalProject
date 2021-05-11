@@ -3,3 +3,5 @@
 3. ขา - ของ rain sensor ต่อกับ ground
 4. ขา + ของ rain sensor ต่อกับ U5V
 5. อีกขานึงของ ldr ต่อกับ U5V
+
+มีรูปให้ดูใน folder รูปวงจร
