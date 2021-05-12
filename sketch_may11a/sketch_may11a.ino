@@ -1,3 +1,17 @@
+#include <AuthClient.h>
+#include <debug.h>
+#include <MicroGear.h>
+#include <MQTTClient.h>
+#include <PubSubClient.h>
+#include <SHA1.h>
+
+#include <AuthClient.h>
+#include <debug.h>
+#include <MicroGear.h>
+#include <MQTTClient.h>
+#include <PubSubClient.h>
+#include <SHA1.h>
+
 #include <ESP8266WiFi.h>
 #include <MicroGear.h>
 
@@ -8,10 +22,10 @@ const char* password = "0980171683";
 #define KEY     "5YqZzgJeAi9CRe2"
 #define SECRET  "6SY14hdZHcvwtxzSGQPMUiqAE"
 #define ALIAS   "esp8266"
+#define TargetWeb "WebHTML"
 
 WiFiClient client;
 
-int timer = 0;
 MicroGear microgear(client);
 
 /* If a new message arrives, do this */
@@ -86,27 +100,28 @@ void setup() {
 void loop() {
     /* To check if the microgear is still connected */
     if (microgear.connected()) {
-        Serial.println("connected");
-
-        /* Call this method regularly otherwise the connection may be lost */
+        //Serial.println("connected");
+        
         microgear.loop();
 
-        if (timer >= 1000) {
-            Serial.println("Publish...");
+        if (Serial.available()) {
+            String s = Serial.readString();
+            Serial.println(s);
+        }
 
-            /* Chat with the microgear named ALIAS which is myself */
-            microgear.chat(ALIAS,"Hello");
-            timer = 0;
-        } 
-        else timer += 100;
+       Serial.println("Connected");
+        microgear.chat(TargetWeb,"Connected");
+        
+
+        
+        
+        
+      
+        
     }
     else {
         Serial.println("connection lost, reconnect...");
-        if (timer >= 5000) {
-            microgear.connect(APPID);
-            timer = 0;
-        }
-        else timer += 100;
+        microgear.connect(APPID);
     }
     delay(100);
 }
