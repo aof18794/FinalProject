@@ -154,10 +154,10 @@ int main(void)
 	  //value0 is ldr, the more, the darker. value1 is rain, the more, the heavier rain.
 	  if(isActive==1){ //rain green led lit, sun shine and rain stop green led out, no sun shine green led lit
 		  if(adcValue0<=3600 && adcValue1<1000){ //sun shine and no rain
-			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_RESET);
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_RESET); // roof open
 	  	  }
 		  if(adcValue1>=1000 || adcValue0>3600){// rain or no sun shine
-			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_SET);
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_SET); // roof close
 		  }
 	  }
   }
