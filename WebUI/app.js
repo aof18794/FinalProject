@@ -4,8 +4,8 @@ var hum, light, rain = 0, temp;
 
 function displayText() {
     //------------------- HUMIDITY --------------------//
-    hum = document.getElementById("humText").value;
-    document.getElementById("variableStatus").innerHTML = "Humidity : " + hum + "<br>";
+    //hum = document.getElementById("humText").value;
+    //document.getElementById("variableStatus").innerHTML = "Humidity : " + hum + "<br>";
     //------------------- LIGHT --------------------//
     light = document.getElementById("lightText").value;
     if (light < 5) {
@@ -17,7 +17,7 @@ function displayText() {
         var str = "Enough Light : " + lightCheck;
         var result = str.fontcolor("green");
     }
-    document.getElementById("variableStatus").innerHTML += "Light : " + light + "<br>";
+    document.getElementById("variableStatus").innerHTML = "Light : " + light + "<br>";
     document.getElementById("lightIsEnough").innerHTML = result;
     document.getElementById("lightIsEnough").style.textTransform = "uppercase";
     //------------------- RAIN --------------------//
@@ -27,8 +27,8 @@ function displayText() {
     }
     document.getElementById("variableStatus").innerHTML += "Rain : " + rain + "<br>";
     //------------------- TEMPERATURE --------------------//
-    temp = document.getElementById("tempText").value;
-    document.getElementById("variableStatus").innerHTML += "Temperature : " + temp + "<br>";
+    //temp = document.getElementById("tempText").value;
+    //document.getElementById("variableStatus").innerHTML += "Temperature : " + temp + "<br>";
 }
 
 function toggle() {

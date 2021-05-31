@@ -13,34 +13,38 @@
         <h1 style="color: rgb(0, 0, 255);"> <b>Rarw Tark Pah</b></h1>
     </center>
     <div class="slidecontainer">
+        <!-- 
         <p>Humid : <span id="humidValue"></span></p>
         <input type="range" id="humText" min="0" max="10" value="0">
+         -->
         <p>Light : <span id="lightValue"></span></p>
         <input type="range" id="lightText" min="0" max="10" value="0">
         <p>Rain : <span id="rainValue"></span> (If rain != 0 will put Rarw back in)</p>
         <input type="range" id="rainText" min="0" max="1" value="0">
-        <p>Temperature : <span id="tempValue"></span></p>
-        <input type="range" id="tempText" min="0" max="10" value="0">
+
+        <!-- <p>Temperature : <span id="tempValue"></span></p>
+        <input type="range" id="tempText" min="0" max="10" value="0"> -->
+
         <script>
-            var humidSlider = document.getElementById("humText");
+            //var humidSlider = document.getElementById("humText");
             var lightSlider = document.getElementById("lightText");
             var rainSlider = document.getElementById("rainText");
-            var tempSlider = document.getElementById("tempText");
+            //var tempSlider = document.getElementById("tempText");
 
-            var humidValue = document.getElementById("humidValue");
+            //var humidValue = document.getElementById("humidValue");
             var lightValue = document.getElementById("lightValue");
             var rainValue = document.getElementById("rainValue");
-            var tempValue = document.getElementById("tempValue");
+            //var tempValue = document.getElementById("tempValue");
 
-            humidValue.innerHTML = humidSlider.value;
+            //humidValue.innerHTML = humidSlider.value;
             lightValue.innerHTML = lightSlider.value;
             rainValue.innerHTML = rainSlider.value;
-            tempValue.innerHTML = tempSlider.value;
+            //tempValue.innerHTML = tempSlider.value;
             
-            humidSlider.oninput = function() {
-              humidValue.innerHTML = this.value;
-              displayText()
-            }
+            // humidSlider.oninput = function() {
+            //   humidValue.innerHTML = this.value;
+            //   displayText()
+            // }
             lightSlider.oninput = function() {
               lightValue.innerHTML = this.value;
               displayText()
@@ -49,14 +53,14 @@
               rainValue.innerHTML = this.value;
               displayText()
             }
-            tempSlider.oninput = function() {
-              tempValue.innerHTML = this.value;
-              displayText()
-            }
+            // tempSlider.oninput = function() {
+            //   tempValue.innerHTML = this.value;
+            //   displayText()
+            // }
         </script>
     </div>
 
-    <p id = "variableStatus">Na<br>Na<br>Na<br>Na<br></p>
+    <p id = "variableStatus">Light : 0 <br>Rain : 0 </p>
     <b>
         <center>
             <p id = "lightIsEnough" >  ENOUGH LIGHT : Na</p>
