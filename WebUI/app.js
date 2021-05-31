@@ -1,6 +1,7 @@
-var rarwIsOut = false;
+var roofIsOut = true;
 var rainCheck, lightCheck = false;
 var hum, light, rain = 0, temp;
+var userCommandOpen = true;
 
 function displayText() {
     //------------------- HUMIDITY --------------------//
@@ -16,28 +17,110 @@ function displayText() {
         lightCheck = true;
         var str = "Enough Light : " + lightCheck;
         var result = str.fontcolor("green");
+        if (userCommandOpen) {
+            roofIsOut = true;
+        }
+        // document.getElementById("roofIsOut").innerHTML = "Roof is now : Open<br>";
     }
     document.getElementById("variableStatus").innerHTML = "Light : " + light + "<br>";
     document.getElementById("lightIsEnough").innerHTML = result;
     document.getElementById("lightIsEnough").style.textTransform = "uppercase";
     //------------------- RAIN --------------------//
     rain = document.getElementById("rainText").value;
-    if (rain != 0) {
-        toggle();
-    }
+    
+    update();
+    // if (rain != 0) {
+    //     roofIsOut = false;
+    //     document.getElementById("roofIsOut").innerHTML = "Roof is now : Close (cause raining outside)<br>";
+    // } else if (rain == 0) {
+    //     if (userCommandOpen) {
+    //         if (light < 5) {
+    //             roofIsOut = false;
+    //             document.getElementById("roofIsOut").innerHTML = "Roof is now : Close<br>";
+    //         } else {
+    //             roofIsOut = true;
+    //             document.getElementById("roofIsOut").innerHTML = "Roof is now : Open<br>";
+    //         }
+    //     } else if (!userCommandOpen) {
+    //         roofIsOut = false;
+    //         document.getElementById("roofIsOut").innerHTML = "Roof is now : Close<br>";
+    //     }
+    // }
+
     document.getElementById("variableStatus").innerHTML += "Rain : " + rain + "<br>";
     //------------------- TEMPERATURE --------------------//
     //temp = document.getElementById("tempText").value;
     //document.getElementById("variableStatus").innerHTML += "Temperature : " + temp + "<br>";
+    // if (userCommandOpen == true) {
+    //     document.getElementById("userCommand").innerHTML = "Command : Open";
+    // } else {
+    //     document.getElementById("userCommand").innerHTML = "Command : Close";
+    // }
 }
 
+// function toggle() {
+//     userCommandOpen = !userCommandOpen;
+//     roofIsOut = !roofIsOut;
+//     if (rain != 0 || rain == "Na") {
+//         roofIsOut = false;
+//         rainCheck = "Close (cause raining outside)";
+//     } else {
+//         // userCommandOpen = !userCommandOpen;
+//         rainCheck = roofIsOut ? "Open" : "Close";
+//     }
+//     if (userCommandOpen == true) {
+//         roofIsOut = true;
+//         document.getElementById("userCommand").innerHTML = "Command : Open";
+//     } else {
+//         roofIsOut = false;
+//         document.getElementById("userCommand").innerHTML = "Command : Close";
+//     }
+//     document.getElementById("roofIsOut").innerHTML = "Roof is now : " + rainCheck + "<br>";
+// }
+
 function toggle() {
-    rarwIsOut = !rarwIsOut;
-    if (rain != 0 || rain == "Na") {
-        rarwIsOut = false;
-        rainCheck = "Close (cause raining outside)";
+    userCommandOpen = !userCommandOpen;
+    update();
+    // if (userCommandOpen) {
+    //     if (rain != 0 || rain == "Na") {
+    //         roofIsOut = false;
+    //         rainCheck = "Close (cause raining outside)";
+    //     } else {
+    //         roofIsOut = true;
+    //         rainCheck = roofIsOut ? "Open" : "Close";
+    //     }
+    // } else {
+    //     roofIsOut = false;
+    //     if (rain != 0) {
+    //         rainCheck = "Close (cause raining outside)";
+    //     } else {
+    //         rainCheck = "Close";
+    //     }
+    // }
+    // document.getElementById("roofIsOut").innerHTML = "Roof is now : " + rainCheck + "<br>";
+    if (userCommandOpen == true) {
+        document.getElementById("userCommand").innerHTML = "Command : Open";
     } else {
-        rainCheck = rarwIsOut ? "Open" : "Close";
+        document.getElementById("userCommand").innerHTML = "Command : Close";
     }
-    document.getElementById("rarwIsOut").innerHTML = "Roof is now : " + rainCheck + "<br>";
+}
+
+function update() {
+    if (rain != 0) {
+        roofIsOut = false;
+        document.getElementById("roofIsOut").innerHTML = "Roof is now : Close (cause raining outside)<br>";
+    } else if (rain == 0) {
+        if (userCommandOpen) {
+            if (light < 5) {
+                roofIsOut = false;
+                document.getElementById("roofIsOut").innerHTML = "Roof is now : Close<br>";
+            } else {
+                roofIsOut = true;
+                document.getElementById("roofIsOut").innerHTML = "Roof is now : Open<br>";
+            }
+        } else if (!userCommandOpen) {
+            roofIsOut = false;
+            document.getElementById("roofIsOut").innerHTML = "Roof is now : Close<br>";
+        }
+    }
 }
