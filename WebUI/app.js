@@ -1,4 +1,4 @@
-var rarwIsOut = false;
+var rarwIsOut = true;
 var rainCheck, lightCheck = false;
 var hum, light, rain = 0, temp;
 
@@ -16,6 +16,8 @@ function displayText() {
         lightCheck = true;
         var str = "Enough Light : " + lightCheck;
         var result = str.fontcolor("green");
+        rarwIsOut = true;
+        document.getElementById("rarwIsOut").innerHTML = "Roof is now : Open<br>";
     }
     document.getElementById("variableStatus").innerHTML = "Light : " + light + "<br>";
     document.getElementById("lightIsEnough").innerHTML = result;
