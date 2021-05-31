@@ -35,9 +35,9 @@ function toggle() {
     rarwIsOut = !rarwIsOut;
     if (rain != 0 || rain == "Na") {
         rarwIsOut = false;
-        rainCheck = "In (cause raining outside)";
+        rainCheck = "Close (cause raining outside)";
     } else {
-        rainCheck = rarwIsOut ? "Out" : "In";
+        rainCheck = rarwIsOut ? "Open" : "Close";
     }
-    document.getElementById("rarwIsOut").innerHTML = "Rarw Tark Pah is now : " + rainCheck + "<br>";
+    document.getElementById("rarwIsOut").innerHTML = "Roof is now : " + rainCheck + "<br>";
 }
