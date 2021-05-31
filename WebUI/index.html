@@ -116,12 +116,12 @@
           microgear.on('message',function(topic,msg) {
              document.getElementById("Test").innerHTML = msg;
              console.log(msg);
-             console.log(topic);
           });
   
           microgear.on('connected', function() {
-              microgear.setAlias('hello');    /* alias can be renamed anytime with this function */
+              //microgear.setAlias('hello');    /* alias can be renamed anytime with this function */
               document.getElementById("isConnected").innerHTML = "Now I am connected with NETPIE...";
+              /*
               document.getElementById("info").innerHTML ='NETPIE On HTML5'
               setInterval(function() {
                   var currentdate = new Date(); 
@@ -133,6 +133,7 @@
                       + currentdate.getSeconds();
                   microgear.chat("hello", "Hello from myself at " + datetime);
               },1000);
+              */
           });
   
           microgear.on('present', function(event) {

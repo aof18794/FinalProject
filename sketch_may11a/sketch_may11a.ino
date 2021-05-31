@@ -38,20 +38,6 @@ void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
     
 }
 
-void onFoundgear(char *attribute, uint8_t* msg, unsigned int msglen) {
-    Serial.print("Found new member --> ");
-    for (int i=0; i<msglen; i++)
-        Serial.print((char)msg[i]);
-    Serial.println();  
-}
-
-void onLostgear(char *attribute, uint8_t* msg, unsigned int msglen) {
-    Serial.print("Lost member --> ");
-    for (int i=0; i<msglen; i++)
-        Serial.print((char)msg[i]);
-    Serial.println();
-}
-
 /* When a microgear is connected, do this */
 void onConnected(char *attribute, uint8_t* msg, unsigned int msglen) {
     Serial.println("Connected to NETPIE...");
@@ -64,12 +50,6 @@ void setup() {
     /* Add Event listeners */
     /* Call onMsghandler() when new message arraives */
     microgear.on(MESSAGE,onMsghandler);
-
-    /* Call onFoundgear() when new gear appear */
-    microgear.on(PRESENT,onFoundgear);
-
-    /* Call onLostgear() when some gear goes offline */
-    microgear.on(ABSENT,onLostgear);
 
     /* Call onConnected() when NETPIE connection is established */
     microgear.on(CONNECTED,onConnected);
@@ -103,22 +83,30 @@ void loop() {
         //Serial.println("connected");
         
           microgear.loop();
-          /*
+          
             Serial.println("connected");
+            
             if(Serial.available())
             {
                 int num0 = Serial.parseInt();
                 int num1 = Serial.parseInt();
-                String data = String(num0) + "/" + String(num1);
+                String data = String(num1) + "/" + String(num0);
                 char msg[1024];
                 data.toCharArray(msg,data.length());
                 Serial.println(msg);
+                //Serial.println(num0);
+                //Serial.println(num1);
+                //microgear.chat(TargetWeb,num0);
+                //microgear.chat(TargetWeb,num1);
+                microgear.chat(TargetWeb,msg);
               
             }
-            */
-          Serial.println("Data");
+            
+            
+          //Serial.println("Data");
+          //microgear.chat(TargetWeb,"Data");
 
-        microgear.chat(TargetWeb,"Connected");
+       
   
     }
     else {
