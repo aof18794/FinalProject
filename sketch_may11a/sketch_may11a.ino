@@ -90,7 +90,7 @@ void loop() {
             {
                 int num0 = Serial.parseInt();
                 int num1 = Serial.parseInt();
-                String data = String(num1) + "/" + String(num0);
+                String data = String(num1) + "/" + String(num0) + "0";
                 char msg[1024];
                 data.toCharArray(msg,data.length());
                 Serial.println(msg);

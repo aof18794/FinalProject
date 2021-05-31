@@ -28,7 +28,7 @@ function displayText() {
     //------------------- RAIN --------------------//
     rain = document.getElementById("rainText").value;
     
-    update();
+    //update();
     // if (rain != 0) {
     //     roofIsOut = false;
     //     document.getElementById("roofIsOut").innerHTML = "Roof is now : Close (cause raining outside)<br>";
@@ -127,4 +127,16 @@ function update() {
             document.getElementById("roofIsOut").innerHTML = "Roof is now : Close<br>";
         }
     }
+}
+
+const input = (a) => {
+    var split_msg = a.split("/");
+    light = split_msg[0];
+    rain = split_msg[1];
+    var lighttmp = document.getElementById("lightValue");
+    var raintmp = document.getElementById("rainValue");
+    lighttmp.innerHTML = light;
+    raintmp.innerHTML = rain;
+    displayText();
+    update();
 }
