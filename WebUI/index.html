@@ -33,9 +33,9 @@
         <input type="range" id="humText" min="0" max="10" value="0">
          -->
         <p>Light : <span id="lightValue"></span></p>
-        <input type="range" id="lightText" min="0" max="10" value="0">
+        <input type="range" id="lightText" min="0" max="4000" value="0">
         <p>Rain : <span id="rainValue"></span> (If rain != 0 will put Rarw back in)</p>
-        <input type="range" id="rainText" min="0" max="1" value="0">
+        <input type="range" id="rainText" min="0" max="2000" value="0">
 
         <!-- <p>Temperature : <span id="tempValue"></span></p>
         <input type="range" id="tempText" min="0" max="10" value="0"> -->
@@ -78,16 +78,18 @@
     <p id = "variableStatus">Light : 0 <br>Rain : 0 </p>
     <b>
         <center>
-            <p id = "lightIsEnough" >  ENOUGH LIGHT : Na</p>
+            <p id = "lightIsEnough" >  ENOUGH LIGHT : TRUE</p>
             <!-- <center>
                 <svg height="100" width="100">
                     <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="green" />
                     Sorry, your browser does not support inline SVG.  
                 </svg>
             </center> -->
-            <button class="btn btn-outline-success" onclick="toggle()" id = "userCommand">Command : Open</button>
-            
+            <p id = "NowRaining">Raining : FALSE</p>
+            <button class="btn btn-outline-success" onclick="toggle()" id = "userCommand">Toggle Roof</button>
+            <br><br>
             <p id = "roofIsOut">Roof is now : Open</p>
+            <p id = "Userwant">User want to : Open</p>
         </center>
     </b><br>
 
