@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 var roofIsOut = true;
+=======
+var RoofisOut = true;
+>>>>>>> 83e9daa6fa14291a8082a4f74f02a933e0826912
 var rainCheck, lightCheck = false;
 var hum, light, rain = 0, temp;
 var userCommandOpen = true;
@@ -17,10 +21,15 @@ function displayText() {
         lightCheck = true;
         var str = "Enough Light : " + lightCheck;
         var result = str.fontcolor("green");
+<<<<<<< HEAD
         if (userCommandOpen) {
             roofIsOut = true;
         }
         // document.getElementById("roofIsOut").innerHTML = "Roof is now : Open<br>";
+=======
+        RoofisOut = true;
+        document.getElementById("RoofisOut").innerHTML = "Roof is now : Open<br>";
+>>>>>>> 83e9daa6fa14291a8082a4f74f02a933e0826912
     }
     document.getElementById("variableStatus").innerHTML = "Light : " + light + "<br>";
     document.getElementById("lightIsEnough").innerHTML = result;
@@ -79,6 +88,7 @@ function displayText() {
 // }
 
 function toggle() {
+<<<<<<< HEAD
     userCommandOpen = !userCommandOpen;
     update();
     // if (userCommandOpen) {
@@ -123,4 +133,14 @@ function update() {
             document.getElementById("roofIsOut").innerHTML = "Roof is now : Close<br>";
         }
     }
+=======
+    RoofisOut = !RoofisOut;
+    if (rain != 0 || rain == "Na") {
+        RoofisOut = false;
+        rainCheck = "Close (cause raining outside)";
+    } else {
+        rainCheck = RoofisOut ? "Open" : "Close";
+    }
+    document.getElementById("RoofisOut").innerHTML = "Roof is now : " + rainCheck + "<br>";
+>>>>>>> 83e9daa6fa14291a8082a4f74f02a933e0826912
 }
