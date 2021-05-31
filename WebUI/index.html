@@ -90,6 +90,7 @@
             <br><br>
             <p id = "roofIsOut">Roof is now : Open</p>
             <p id = "Userwant">User want to : Open</p>
+            <p id = "Test">Empty</p>
         </center>
     </b><br>
 
@@ -103,14 +104,19 @@
         const APPID     = "FinalProjectCOVID";
         const APPKEY    = "XbhZVULDhsaikPT";
         const APPSECRET = "N0ToZ1vr1urtI8R47q6ewv6m1";
+        const Alias = "WebHTML";
+        const thing1 = "esp8266";
   
           var microgear = Microgear.create({
               key: APPKEY,
-              secret: APPSECRET
+              secret: APPSECRET,
+              alias: Alias
           });
   
           microgear.on('message',function(topic,msg) {
-             document.getElementById("data").innerHTML = msg;
+             document.getElementById("Test").innerHTML = msg;
+             console.log(msg);
+             console.log(topic);
           });
   
           microgear.on('connected', function() {

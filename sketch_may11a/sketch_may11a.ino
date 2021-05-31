@@ -102,26 +102,28 @@ void loop() {
     if (microgear.connected()) {
         //Serial.println("connected");
         
-        microgear.loop();
+          microgear.loop();
+          /*
+            Serial.println("connected");
+            if(Serial.available())
+            {
+                int num0 = Serial.parseInt();
+                int num1 = Serial.parseInt();
+                String data = String(num0) + "/" + String(num1);
+                char msg[1024];
+                data.toCharArray(msg,data.length());
+                Serial.println(msg);
+              
+            }
+            */
+          Serial.println("Data");
 
-        if (Serial.available()) {
-            String s = Serial.readString();
-            Serial.println(s);
-        }
-
-       Serial.println("Connected");
         microgear.chat(TargetWeb,"Connected");
-        
-
-        
-        
-        
-      
-        
+  
     }
     else {
         Serial.println("connection lost, reconnect...");
         microgear.connect(APPID);
     }
-    delay(100);
+    delay(1000);
 }
