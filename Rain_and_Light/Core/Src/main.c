@@ -42,7 +42,6 @@
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
 
-UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart6;
 
@@ -55,7 +54,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_ADC1_Init(void);
-static void MX_USART1_UART_Init(void);
 static void MX_USART6_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
@@ -99,7 +97,6 @@ void ADC_Select_CH1(void){
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  char	decision[1];
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -122,10 +119,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_ADC1_Init();
-  MX_USART1_UART_Init();
   MX_USART6_UART_Init();
   /* USER CODE BEGIN 2 */
-  int isUserRequestClose=0; // 1 mean close 0 mean open
   //check active from user.*************************************************************
   /* USER CODE END 2 */
 
@@ -138,13 +133,6 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 	  //get data from node mcu
-	  if (HAL_UART_Receive(&huart6, decision, 1, 1000) == HAL_OK){
-	         if(decision[0]=='1'){
-	        	 isUserRequestClose=1;
-	         }else if(decision[0]=='0'){
-	        	 isUserRequestClose=0;
-	         }
-	  }
 
 	  ADC_Select_CH0();
 	  HAL_ADC_Start(&hadc1);
@@ -169,18 +157,13 @@ int main(void)
 
 	  //led on -> roof close
 	  //value0 is ldr, the more, the darker. value1 is rain, the more, the heavier rain.
-	  if(isUserRequestClose==0){ //rain green led lit, sun shine and rain stop green led out, no sun shine green led lit
-		  if(adcValue1<=3600 && adcValue0<1000){ // no rain and sun shine
-			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_RESET); // roof open
-			  HAL_UART_Transmit(&huart6, buffer, strlen(buffer), 100); //roof open , rain
-			  HAL_UART_Transmit(&huart6, buffer2, strlen(buffer2), 100);// light
-	  	  }
-		  if(adcValue0>=1000 || adcValue1>3600){// rain or no sun shine
-			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_SET); // roof close
-			  HAL_UART_Transmit(&huart6, buffer, strlen(buffer), 100); //roof close , rain
-			  HAL_UART_Transmit(&huart6, buffer2, strlen(buffer2), 100);// light
-		  }
-	  }else{
+	  //rain green led lit, sun shine and rain stop green led out, no sun shine green led lit
+	  if(adcValue1<=3600 && adcValue0<1000){ // no rain and sun shine
+		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_RESET); // roof open
+		  HAL_UART_Transmit(&huart6, buffer, strlen(buffer), 100); //roof open , rain
+		  HAL_UART_Transmit(&huart6, buffer2, strlen(buffer2), 100);// light
+	  }
+	  if(adcValue0>=1000 || adcValue1>3600){// rain or no sun shine
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_SET); // roof close
 		  HAL_UART_Transmit(&huart6, buffer, strlen(buffer), 100); //roof close , rain
 		  HAL_UART_Transmit(&huart6, buffer2, strlen(buffer2), 100);// light
@@ -290,39 +273,6 @@ static void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
-
-}
-
-/**
-  * @brief USART1 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART1_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART1_Init 0 */
-
-  /* USER CODE END USART1_Init 0 */
-
-  /* USER CODE BEGIN USART1_Init 1 */
-
-  /* USER CODE END USART1_Init 1 */
-  huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
-  huart1.Init.WordLength = UART_WORDLENGTH_8B;
-  huart1.Init.StopBits = UART_STOPBITS_1;
-  huart1.Init.Parity = UART_PARITY_NONE;
-  huart1.Init.Mode = UART_MODE_TX_RX;
-  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART1_Init 2 */
-
-  /* USER CODE END USART1_Init 2 */
 
 }
 
