@@ -72,7 +72,13 @@ void ADC_Select_CH0(void){
 	  */
 	  sConfig.Channel = ADC_CHANNEL_0;
 	  sConfig.Rank = 1;
+<<<<<<< HEAD
 	  sConfig.SamplingTime = ADC_SAMPLETIME_84CYCLES;
+||||||| 7f56823
+	  sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
+=======
+	  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
+>>>>>>> 6b7dab40fb31398b8a7315e70cab0275286bc738
 	  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
 	  {
 	    Error_Handler();
@@ -85,10 +91,14 @@ void ADC_Select_CH1(void){
 	  */
 	  sConfig.Channel = ADC_CHANNEL_1;
 	  sConfig.Rank = 1;
+<<<<<<< HEAD
 	  sConfig.SamplingTime = ADC_SAMPLETIME_28CYCLES;
+||||||| 7f56823
+=======
+	  sConfig.SamplingTime = ADC_SAMPLETIME_84CYCLES;
+>>>>>>> 6b7dab40fb31398b8a7315e70cab0275286bc738
 	  if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
 	  {
-	    Error_Handler();
 	  }
 }
 /* USER CODE END 0 */
@@ -137,6 +147,28 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
+<<<<<<< HEAD
+||||||| 7f56823
+	  //get data from node mcu
+	  if (HAL_UART_Receive(&huart1, decision, 1, 1000) == HAL_OK){
+	         if(decision[0]=='1'){
+	        	 isUserRequestClose=1;
+	         }else if(decision[0]=='0'){
+	        	 isUserRequestClose=0;
+	         }
+	  }
+
+=======
+	  //get data from node mcu
+	  if (HAL_UART_Receive(&huart6, decision, 1, 1000) == HAL_OK){
+	         if(decision[0]=='1'){
+	        	 isUserRequestClose=1;
+	         }else if(decision[0]=='0'){
+	        	 isUserRequestClose=0;
+	         }
+	  }
+
+>>>>>>> 6b7dab40fb31398b8a7315e70cab0275286bc738
 	  ADC_Select_CH0();
 	  HAL_ADC_Start(&hadc1);
 	  if(HAL_ADC_PollForConversion(&hadc1, 100) == HAL_OK){
@@ -158,6 +190,7 @@ int main(void)
 	  HAL_ADC_Stop(&hadc1);
 	  HAL_Delay(100);
 
+<<<<<<< HEAD
 	  //value0 is ldr, the more, the darker. value1 is rain, the more, the heavier rain. //rain green led lit, sun shine and rain stop green led out, no sun shine green led lit
 	  if(adcValue1<=3600 && adcValue0<1000){ //no rain and sun shine
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_RESET); // roof open
@@ -166,14 +199,55 @@ int main(void)
 		  HAL_UART_Transmit(&huart6, buffer2, strlen(buffer2), 100);// light
 	  }
 	  if(adcValue0>=1000 || adcValue1>3600){//no sun shine or rain
+||||||| 7f56823
+	  //value0 is ldr, the more, the darker. value1 is rain, the more, the heavier rain.
+	  if(isUserRequestClose==0){ //rain green led lit, sun shine and rain stop green led out, no sun shine green led lit
+		  if(adcValue0<=3600 && adcValue1<1000){ //sun shine and no rain
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_RESET); // roof open
+			  HAL_UART_Transmit(&huart1, "1", 1, 100); //roof open
+	  	  }
+		  if(adcValue1>=1000 || adcValue0>3600){// rain or no sun shine
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_SET); // roof close
+			  HAL_UART_Transmit(&huart1, "0", 1, 100); //roof close
+		  }
+	  }else{
+=======
+	  //led on -> roof close
+	  //value0 is ldr, the more, the darker. value1 is rain, the more, the heavier rain.
+	  if(isUserRequestClose==0){ //rain green led lit, sun shine and rain stop green led out, no sun shine green led lit
+		  if(adcValue1<=3600 && adcValue0<1000){ // no rain and sun shine
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_RESET); // roof open
+			  HAL_UART_Transmit(&huart6, buffer, strlen(buffer), 100); //roof open , rain
+			  HAL_UART_Transmit(&huart6, buffer2, strlen(buffer2), 100);// light
+	  	  }
+		  if(adcValue0>=1000 || adcValue1>3600){// rain or no sun shine
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_SET); // roof close
+			  HAL_UART_Transmit(&huart6, buffer, strlen(buffer), 100); //roof close , rain
+			  HAL_UART_Transmit(&huart6, buffer2, strlen(buffer2), 100);// light
+		  }
+	  }else{
+>>>>>>> 6b7dab40fb31398b8a7315e70cab0275286bc738
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5 , GPIO_PIN_SET); // roof close
+<<<<<<< HEAD
 		  //HAL_UART_Transmit(&huart1, "0", 1, 100); //roof close
 		  HAL_UART_Transmit(&huart6, buffer, strlen(buffer), 100); //roof close , rain
 		  HAL_UART_Transmit(&huart6, buffer2, strlen(buffer2), 100);// light
+||||||| 7f56823
+		  HAL_UART_Transmit(&huart1, "0", 1, 100); //roof close
+=======
+		  HAL_UART_Transmit(&huart6, buffer, strlen(buffer), 100); //roof close , rain
+		  HAL_UART_Transmit(&huart6, buffer2, strlen(buffer2), 100);// light
+>>>>>>> 6b7dab40fb31398b8a7315e70cab0275286bc738
 	  }
+<<<<<<< HEAD
 
 	  HAL_Delay(1000);
 
+||||||| 7f56823
+=======
+
+	  HAL_Delay(1000);
+>>>>>>> 6b7dab40fb31398b8a7315e70cab0275286bc738
   }
   /* USER CODE END 3 */
 }

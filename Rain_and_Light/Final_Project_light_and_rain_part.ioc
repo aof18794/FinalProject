@@ -58,6 +58,7 @@ NVIC.PendSV_IRQn=true\:0\:0\:false\:false\:true\:false\:false
 NVIC.PriorityGroup=NVIC_PRIORITYGROUP_0
 NVIC.SVCall_IRQn=true\:0\:0\:false\:false\:true\:false\:false
 NVIC.SysTick_IRQn=true\:0\:0\:true\:false\:true\:true\:true
+NVIC.USART6_IRQn=true\:0\:0\:false\:false\:true\:true\:true
 NVIC.UsageFault_IRQn=true\:0\:0\:false\:false\:true\:true\:false
 PA0-WKUP.Locked=true
 PA0-WKUP.Signal=ADCx_IN0
@@ -105,10 +106,20 @@ PC14-OSC32_IN.Signal=RCC_OSC32_IN
 PC15-OSC32_OUT.Locked=true
 PC15-OSC32_OUT.Mode=LSE-External-Oscillator
 PC15-OSC32_OUT.Signal=RCC_OSC32_OUT
+<<<<<<< HEAD
 PC6.Mode=Asynchronous
 PC6.Signal=USART6_TX
 PC7.Mode=Asynchronous
 PC7.Signal=USART6_RX
+||||||| 7f56823
+=======
+PC6.Locked=true
+PC6.Mode=Asynchronous
+PC6.Signal=USART6_TX
+PC7.Locked=true
+PC7.Mode=Asynchronous
+PC7.Signal=USART6_RX
+>>>>>>> 6b7dab40fb31398b8a7315e70cab0275286bc738
 PH0\ -\ OSC_IN.Locked=true
 PH0\ -\ OSC_IN.Mode=HSE-External-Clock-Source
 PH0\ -\ OSC_IN.Signal=RCC_OSC_IN

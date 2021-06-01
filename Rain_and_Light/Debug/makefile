@@ -54,8 +54,8 @@ all: main-build
 main-build: Final_Project_light_and_rain_part.elf secondary-outputs
 
 # Tool invocations
-Final_Project_light_and_rain_part.elf: $(OBJS) $(USER_OBJS) D:\STM32CubeIDE1.5.1_workspace\Embedded_System_Lab_Final_Project\FinalProject\Rain_and_Light\STM32F411RETX_FLASH.ld
-	arm-none-eabi-gcc -o "Final_Project_light_and_rain_part.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\STM32CubeIDE1.5.1_workspace\Embedded_System_Lab_Final_Project\FinalProject\Rain_and_Light\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Final_Project_light_and_rain_part.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Final_Project_light_and_rain_part.elf: $(OBJS) $(USER_OBJS) C:\Users\Windows\ 10\Desktop\FinalProject\Rain_and_Light\STM32F411RETX_FLASH.ld
+	arm-none-eabi-gcc -o "Final_Project_light_and_rain_part.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Windows 10\Desktop\FinalProject\Rain_and_Light\STM32F411RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Final_Project_light_and_rain_part.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
