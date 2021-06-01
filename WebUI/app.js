@@ -50,6 +50,7 @@ function update() {
         roofIsOut = false;
         document.getElementById("roofIsOut").innerHTML = "Roof is now : Close (cause raining outside)<br>";
         var str = document.getElementById("NowRaining").innerHTML = "Raining : TRUE "; 
+        var result = str.fontcolor("red");
     } else if (rain <= 1000) { // not raining
         var str = document.getElementById("NowRaining").innerHTML = "Raining : FALSE "; 
         if (userCommandOpen) {
@@ -64,7 +65,10 @@ function update() {
             roofIsOut = false;
             document.getElementById("roofIsOut").innerHTML = "Roof is now : Close<br>";
         }
+        var result = str.fontcolor("green");
     }
+    document.getElementById("NowRaining").innerHTML = result;
+    document.getElementById("NowRaining").style.textTransform = "uppercase";
     displayText();
 }
 
