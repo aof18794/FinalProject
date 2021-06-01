@@ -153,7 +153,7 @@ int main(void)
 	  	  sprintf(buffer2,"%d \n \r",adcValue1);
 	  HAL_UART_Transmit(&huart2, buffer2, strlen(buffer2), 100);
 	  HAL_ADC_Stop(&hadc1);
-	  HAL_Delay(100);
+	  //HAL_Delay(100);
 
 	  //led on -> roof close
 	  //value0 is ldr, the more, the darker. value1 is rain, the more, the heavier rain.
