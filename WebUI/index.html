@@ -6,71 +6,78 @@
     <script src="https://cdn.netpie.io/microgear.js"></script>
     <script src="app.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <center>
-        <h1 style="color: rgb(0, 0, 255);"> <b>Rarw Tark Pah</b></h1>
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+          <h5 class="text-white h4">Members</h5>
+          <span class="text-white p">Pakorn Kongrit 6230409421 <br> Siravich Boonyuen 6231369121 <br> Peemaphoj Chumswee 6230415121 <br> Thanat Raktham 6231327821</span>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <h1 class = "text-light bg-dark mx-auto">Rarw Tark Pah</h1>
+        </div>
+        
+      </nav>
+      
+      <center>   
+            <h2 id = "Userwant"><br>User want the roof to Open</h2>
+          <div class="slidecontainer">
+            <!-- <p>Humid : <span id="humidValue"></span></p> -->
+            <p><br>(Enough light if Light > 3600)</p>
+            <h4>Light : <span id="lightValue"></span></h4>
+            <!-- <input type="range" id="lightText" min="0" max="10" value="0"> -->
+            <p>(Is Raining if Rain > 1000)</p>
+            <h4>Rain : <span id="rainValue"></span></h4>
+            <!-- <input type="range" id="rainText" min="0" max="10" value="0"> -->
+    
+            <!-- <p>Temperature : <span id="tempValue"></span></p> -->
+    
+            <!-- <script>
+                var humidSlider = document.getElementById("humText");
+                var lightSlider = document.getElementById("lightText");
+                var rainSlider = document.getElementById("rainText");
+                var tempSlider = document.getElementById("tempText");
+    
+                var humidValue = document.getElementById("humidValue");
+                var lightValue = document.getElementById("lightValue");
+                var rainValue = document.getElementById("rainValue");
+                var tempValue = document.getElementById("tempValue");
+    
+                humidValue.innerHTML = humidSlider.value;
+                lightValue.innerHTML = lightSlider.value;
+                rainValue.innerHTML = rainSlider.value;
+    
+            </script> -->
+        </div>
     </center>
-    <div class="slidecontainer">
-        <p>Humid : <span id="humidValue"></span></p>
-        <input type="range" id="humText" min="0" max="10" value="0">
-        <p>Light : <span id="lightValue"></span></p>
-        <input type="range" id="lightText" min="0" max="10" value="0">
-        <p>Rain : <span id="rainValue"></span> (If rain != 0 will put Rarw back in)</p>
-        <input type="range" id="rainText" min="0" max="1" value="0">
-        <p>Temperature : <span id="tempValue"></span></p>
-        <input type="range" id="tempText" min="0" max="10" value="0">
-        <script>
-            var humidSlider = document.getElementById("humText");
-            var lightSlider = document.getElementById("lightText");
-            var rainSlider = document.getElementById("rainText");
-            var tempSlider = document.getElementById("tempText");
 
-            var humidValue = document.getElementById("humidValue");
-            var lightValue = document.getElementById("lightValue");
-            var rainValue = document.getElementById("rainValue");
-            var tempValue = document.getElementById("tempValue");
-
-            humidValue.innerHTML = humidSlider.value;
-            lightValue.innerHTML = lightSlider.value;
-            rainValue.innerHTML = rainSlider.value;
-            tempValue.innerHTML = tempSlider.value;
-            
-            humidSlider.oninput = function() {
-              humidValue.innerHTML = this.value;
-              displayText()
-            }
-            lightSlider.oninput = function() {
-              lightValue.innerHTML = this.value;
-              displayText()
-            }
-            rainSlider.oninput = function() {
-              rainValue.innerHTML = this.value;
-              displayText()
-            }
-            tempSlider.oninput = function() {
-              tempValue.innerHTML = this.value;
-              displayText()
-            }
-        </script>
-    </div>
-
-    <p id = "variableStatus">Na<br>Na<br>Na<br>Na<br></p>
+    <!-- <p id = "variableStatus">Light : 0 <br>Rain : 0 </p> -->
+    <center>
     <b>
-        <center>
-            <p id = "lightIsEnough" >  ENOUGH LIGHT : Na</p>
+            <p id = "lightIsEnough" ><br>ENOUGH LIGHT : TRUE</p>
             <!-- <center>
                 <svg height="100" width="100">
                     <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="green" />
                     Sorry, your browser does not support inline SVG.  
                 </svg>
             </center> -->
-            <button onclick="toggle()">Toggle Rarw Tark Pah</button>
+            <p id = "NowRaining">RAINING : FALSE</p>
+            <!-- <button class="btn btn-outline-success" onclick="toggle()" id = "userCommand">Toggle Roof</button> -->
+            <br><br>
+            <p id = "roofIsOut">Roof is now : Open</p>
             
-            <p id = "rarwIsOut">Rarw Tark Pah is now : In</p>
-        </center>
+            <p id = "Test">Empty</p>
     </b><br>
+    </center>
 
     <!-- ------------------- NETPIE - MICROGEAR/HTML -------------------- -->
     <center>
@@ -82,30 +89,24 @@
         const APPID     = "FinalProjectCOVID";
         const APPKEY    = "XbhZVULDhsaikPT";
         const APPSECRET = "N0ToZ1vr1urtI8R47q6ewv6m1";
+        const Alias = "WebHTML";
+        const thing1 = "esp8266";
   
           var microgear = Microgear.create({
               key: APPKEY,
-              secret: APPSECRET
+              secret: APPSECRET,
+              alias: Alias
           });
   
           microgear.on('message',function(topic,msg) {
-             document.getElementById("data").innerHTML = msg;
+
+            input(msg);
+             document.getElementById("Test").innerHTML = msg;
+             
           });
   
           microgear.on('connected', function() {
-              microgear.setAlias('hello');    /* alias can be renamed anytime with this function */
               document.getElementById("isConnected").innerHTML = "Now I am connected with NETPIE...";
-              document.getElementById("info").innerHTML ='NETPIE On HTML5'
-              setInterval(function() {
-                  var currentdate = new Date(); 
-                  var datetime = currentdate.getDate() + "/"
-                      + (currentdate.getMonth()+1)  + "/" 
-                      + currentdate.getFullYear() + " @ "  
-                      + currentdate.getHours() + ":"  
-                      + currentdate.getMinutes() + ":" 
-                      + currentdate.getSeconds();
-                  microgear.chat("hello", "Hello from myself at " + datetime);
-              },1000);
           });
   
           microgear.on('present', function(event) {
