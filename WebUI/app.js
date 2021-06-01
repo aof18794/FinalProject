@@ -1,84 +1,41 @@
 var roofIsOut = true;
-var rainCheck, lightCheck = false;
-var hum, light, rain = 0, temp;
-var userCommandOpen = true;
-
-function displayText() {
-    //------------------- LIGHT --------------------//
-    //light = document.getElementById("lightText").value;
-    if (light > 3600 ) { // dark
-        lightCheck = false;
-        var str = "Enough Light : " + lightCheck;
-        var result = str.fontcolor("red");
-    } else { // light
-        lightCheck = true;
-        var str = "Enough Light : " + lightCheck;
-        var result = str.fontcolor("green");
-        if (userCommandOpen) {
-            roofIsOut = true;
-        }
-
-    }
-    // document.getElementById("variableStatus").innerHTML = "Light : " + light + "<br>";
-    document.getElementById("lightIsEnough").innerHTML = result;
-    document.getElementById("lightIsEnough").style.textTransform = "uppercase";
-    //------------------- RAIN --------------------//
-    //rain = document.getElementById("rainText").value;
-
-
-    // document.getElementById("variableStatus").innerHTML += "Rain : " + rain + "<br>";
-
-}
-
-
-
-// function toggle() {
-//     // userCommandOpen = !userCommandOpen;
-//     update();
-
-//     if (userCommandOpen == true) { //open
-//         document.getElementById("userCommand").innerHTML = "Toggle Roof";
-//         // document.getElementById("Userwant").innerHTML = "User want to : Open" ;
-//     } else {
-//         document.getElementById("userCommand").innerHTML = "Toggle Roof";
-//         // document.getElementById("Userwant").innerHTML = "User want to : Close";
-//     }
-// }
-
+var light, rain;
+        
 function update() {
+    //------------------- RAIN <Text/Condition>, LIGHT <Condition>--------------------//
     if (rain > 1000) { //raining
         roofIsOut = false;
-        document.getElementById("roofIsOut").innerHTML = "Roof is now : Close (cause raining outside)<br>";
-        var str = document.getElementById("NowRaining").innerHTML = "Raining : TRUE "; 
-        var result = str.fontcolor("red");
+        document.getElementById("roofIsOut").innerHTML = "Roof Status : Close (raining)";
+        var rainText = document.getElementById("NowRaining").innerHTML = "Raining"; 
+        var rainValue = rainText.fontcolor("red");
     } else if (rain <= 1000) { // not raining
-        var str = document.getElementById("NowRaining").innerHTML = "Raining : FALSE "; 
-        if (userCommandOpen) {
-            if (light > 3600) { //dark
-                roofIsOut = false;
-                document.getElementById("roofIsOut").innerHTML = "Roof is now : Close<br>";
-            } else {
-                roofIsOut = true;
-                document.getElementById("roofIsOut").innerHTML = "Roof is now : Open<br>";
-            }
-        } else if (!userCommandOpen) {
+        if (light > 3600) { //dark
             roofIsOut = false;
-            document.getElementById("roofIsOut").innerHTML = "Roof is now : Close<br>";
+            document.getElementById("roofIsOut").innerHTML = "Roof Status : Close";
+        } else { //light
+            roofIsOut = true;
+            document.getElementById("roofIsOut").innerHTML = "Roof Status : Open";
         }
-        var result = str.fontcolor("green");
+        var rainText = document.getElementById("NowRaining").innerHTML = "Not Raining"; 
+        var rainValue = rainText.fontcolor("green");
     }
-    document.getElementById("NowRaining").innerHTML = result;
-    document.getElementById("NowRaining").style.textTransform = "uppercase";
-    displayText();
+    //------------------- LIGHT <Text>--------------------//
+    if (light > 3600) { // dark
+        var lightText = "Not Enough Light";
+        var lightValue = lightText.fontcolor("red");
+    } else { // light
+        var lightText = "Enough Light";
+        var lightValue = lightText.fontcolor("green");
+    }
+    document.getElementById("NowRaining").innerHTML = rainValue;
+    document.getElementById("lightIsEnough").innerHTML = lightValue;
+    document.getElementById("lightValue").innerHTML = light;
+    document.getElementById("rainValue").innerHTML = rain;
 }
 
 const input = (a) => {
     var split_msg = a.split("/");
     light = parseInt(split_msg[0]); 
     rain = parseInt(split_msg[1]);
-    var lighttmp = document.getElementById("lightValue");
-    var raintmp = document.getElementById("rainValue");
-    lighttmp.innerHTML = light;
-    raintmp.innerHTML = rain;
     update();
 }

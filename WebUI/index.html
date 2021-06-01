@@ -7,119 +7,99 @@
     <script src="app.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <style>
+      .myFont {
+        font-family: "Lucida Console", "Courier New", sans-serif;
+        font-size: 25px;
+      }
+      .myFont2 {
+        font-family: "Audiowide", sans-serif;
+        font-size: 30px;
+      }
+    </style>
 </head>
 
-<body>
-    <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-          <h5 class="text-white h4">Members</h5>
-          <span class="text-white p">Pakorn Kongrit 6230409421 <br> Siravich Boonyuen 6231369121 <br> Peemaphoj Chumswee 6230415121 <br> Thanat Raktham 6231327821</span>
-        </div>
+<body style="background-color:rgb(240, 240, 240);">
+  <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4">
+        <center>
+          <h5 class="text-white h4" style="font-family:'Lucida Handwriting'">Members</h5>
+        </center>
+        <span class="text-white p">Pakorn Kongrit 6230409421 <br> Siravich Boonyuen 6231369121 <br> Peemaphoj Chumswee 6230415121 <br> Thanat Raktham 6231327821</span>
       </div>
-      <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <h1 class = "text-light bg-dark mx-auto">Rarw Tark Pah</h1>
-        </div>
-        
-      </nav>
+    </div>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <h1 class = "text-light bg-dark mx-auto" style="font-family:'Lucida Handwriting'"><b>&nbsp&nbspROOF RIDER</b></h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
       
-      <center>   
-            <!-- <h2 id = "Userwant"><br>User want the roof to Open</h2> -->
-          <div class="slidecontainer">
-            <!-- <p>Humid : <span id="humidValue"></span></p> -->
-            <p><br>(Enough light if Light < 3600)</p>
-            <h4>Light : <span id="lightValue"></span></h4>
-            <!-- <input type="range" id="lightText" min="0" max="10" value="0"> -->
-            <p>(Is Raining if Rain > 1000)</p>
-            <h4>Rain : <span id="rainValue"></span></h4>
-            <!-- <input type="range" id="rainText" min="0" max="10" value="0"> -->
-    
-            <!-- <p>Temperature : <span id="tempValue"></span></p> -->
-    
-            <!-- <script>
-                var humidSlider = document.getElementById("humText");
-                var lightSlider = document.getElementById("lightText");
-                var rainSlider = document.getElementById("rainText");
-                var tempSlider = document.getElementById("tempText");
-    
-                var humidValue = document.getElementById("humidValue");
-                var lightValue = document.getElementById("lightValue");
-                var rainValue = document.getElementById("rainValue");
-                var tempValue = document.getElementById("tempValue");
-    
-                humidValue.innerHTML = humidSlider.value;
-                lightValue.innerHTML = lightSlider.value;
-                rainValue.innerHTML = rainSlider.value;
-    
-            </script> -->
-        </div>
-    </center>
-
-    <!-- <p id = "variableStatus">Light : 0 <br>Rain : 0 </p> -->
-    <center>
-    <b>
-            <p id = "lightIsEnough" ><br>ENOUGH LIGHT : TRUE</p>
-            <!-- <center>
-                <svg height="100" width="100">
-                    <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="green" />
-                    Sorry, your browser does not support inline SVG.  
-                </svg>
-            </center> -->
-            <p id = "NowRaining">RAINING : FALSE</p>
-            <!-- <button class="btn btn-outline-success" onclick="toggle()" id = "userCommand">Toggle Roof</button> -->
-            <br><br>
-            <h3 id = "roofIsOut">Roof is now : Open</h3>
-            
-            <p id = "Test">Empty</p>
+  <!-- ------------------- WEB UI -------------------- -->
+  <center>
+    <div class="slidecontainer">
+      <p class="myFont"><br>(Enough light if Light < 3600)</p>
+      <h4 class="myFont">Light : <span id="lightValue"></span></h4>
+      <p class="myFont">(Is Raining if Rain > 1000)</p>
+      <h4 class="myFont">Rain : <span id="rainValue"></span></h4><br>
+      <p>_______________________________________________________________________</p>
+    </div>
+    <b><br>
+      <p class="myFont" id = "lightIsEnough" >No Input</p>
+      <p class="myFont" id = "NowRaining">No Input</p>
+      <br>
+      <h3 class="myFont2" id = "roofIsOut">Roof Status : Open</h3>
+      <p>_______________________________________________________________________</p>
     </b><br>
-    </center>
+    <p id = "Test">Empty</p>
+  </center>
 
-    <!-- ------------------- NETPIE - MICROGEAR/HTML -------------------- -->
-    <center>
-        <p id="isConnected">Waiting.....</p>
-        <p id="data"></p>   
-        <p id='info'></p>
-    </center>
-    <script>
-        const APPID     = "FinalProjectCOVID";
-        const APPKEY    = "XbhZVULDhsaikPT";
-        const APPSECRET = "N0ToZ1vr1urtI8R47q6ewv6m1";
-        const Alias = "WebHTML";
-        const thing1 = "esp8266";
-  
-          var microgear = Microgear.create({
-              key: APPKEY,
-              secret: APPSECRET,
-              alias: Alias
-          });
-  
-          microgear.on('message',function(topic,msg) {
+  <!-- ------------------- NETPIE - MICROGEAR/HTML -------------------- -->
+  <center>
+      <p id="isConnected">Waiting.....</p>
+      <p id="data"></p>   
+      <p id='info'></p>
+  </center>
+  <script>
+      const APPID     = "FinalProjectCOVID";
+      const APPKEY    = "XbhZVULDhsaikPT";
+      const APPSECRET = "N0ToZ1vr1urtI8R47q6ewv6m1";
+      const Alias = "WebHTML";
+      const thing1 = "esp8266";
 
-            input(msg);
-             document.getElementById("Test").innerHTML = msg;
-             
-          });
-  
-          microgear.on('connected', function() {
-              document.getElementById("isConnected").innerHTML = "Now I am connected with NETPIE...";
-          });
-  
-          microgear.on('present', function(event) {
-              console.log(event);
-          });
-  
-          microgear.on('absent', function(event) {
-              console.log(event);
-          });
-  
-          microgear.connect(APPID);
+        var microgear = Microgear.create({
+            key: APPKEY,
+            secret: APPSECRET,
+            alias: Alias
+        });
 
-      </script>
+        microgear.on('message',function(topic,msg) {
+
+          input(msg);
+            document.getElementById("Test").innerHTML = msg;
+            
+        });
+
+        microgear.on('connected', function() {
+            document.getElementById("isConnected").innerHTML = "Now I am connected with NETPIE...";
+        });
+
+        microgear.on('present', function(event) {
+            console.log(event);
+        });
+
+        microgear.on('absent', function(event) {
+            console.log(event);
+        });
+
+        microgear.connect(APPID);
+
+    </script>
     
 </body>
 </html>
