@@ -106,20 +106,12 @@ PC14-OSC32_IN.Signal=RCC_OSC32_IN
 PC15-OSC32_OUT.Locked=true
 PC15-OSC32_OUT.Mode=LSE-External-Oscillator
 PC15-OSC32_OUT.Signal=RCC_OSC32_OUT
-<<<<<<< HEAD
-PC6.Mode=Asynchronous
-PC6.Signal=USART6_TX
-PC7.Mode=Asynchronous
-PC7.Signal=USART6_RX
-||||||| 7f56823
-=======
 PC6.Locked=true
 PC6.Mode=Asynchronous
 PC6.Signal=USART6_TX
 PC7.Locked=true
 PC7.Mode=Asynchronous
 PC7.Signal=USART6_RX
->>>>>>> 6b7dab40fb31398b8a7315e70cab0275286bc738
 PH0\ -\ OSC_IN.Locked=true
 PH0\ -\ OSC_IN.Mode=HSE-External-Clock-Source
 PH0\ -\ OSC_IN.Signal=RCC_OSC_IN
