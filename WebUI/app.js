@@ -1,15 +1,16 @@
 var roofIsOut = true;
-var light, rain;
+var lightInput = 400, light, rain = 1001;
         
 function update() {
     //------------------- RAIN <Text/Condition>, LIGHT <Condition>--------------------//
+    light = 4200 - lightInput;
     if (rain > 1000) { //raining
         roofIsOut = false;
         document.getElementById("roofIsOut").innerHTML = "Roof Status : Close (raining)";
         var rainText = document.getElementById("NowRaining").innerHTML = "Raining"; 
         var rainValue = rainText.fontcolor("red");
     } else if (rain <= 1000) { // not raining
-        if (light > 3600) { //dark
+        if (light < 600) { //dark
             roofIsOut = false;
             document.getElementById("roofIsOut").innerHTML = "Roof Status : Close";
         } else { //light
@@ -20,7 +21,7 @@ function update() {
         var rainValue = rainText.fontcolor("green");
     }
     //------------------- LIGHT <Text>--------------------//
-    if (light > 3600) { // dark
+    if (light < 600) { // dark
         var lightText = "Not Enough Light";
         var lightValue = lightText.fontcolor("red");
     } else { // light
@@ -35,7 +36,7 @@ function update() {
 
 const input = (a) => {
     var split_msg = a.split("/");
-    light = parseInt(split_msg[0]); 
+    lightInput = parseInt(split_msg[0]); 
     rain = parseInt(split_msg[1]);
     update();
 }
